@@ -26,3 +26,27 @@
     font-size: 1rem;
     text-align: center;
 }
+.loader-container {
+    /* Escondido por padrão */
+    display: none; 
+    
+    /* Centraliza o spinner na tela */
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.loader {
+    border: 8px solid #f3f3f3; /* Cinza claro (o fundo do círculo) */
+    border-top: 8px solid #3498db; /* Azul (a parte que gira) */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite; /* Aplica a animação */
+}
+
+/* A animação de rotação (Keyframes) */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

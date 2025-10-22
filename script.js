@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchForm = document.querySelector('#search-form');
     const searchInput = document.querySelector('#search-input');
     const moviesContainer = document.querySelector('#movies-container');
+    const loader = document.querySelector('#loader');
     
     //URL base da API (do TMDB)
     const BASE_URL = 'https://api.themoviedb.org/3';
@@ -14,9 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const searchTerm = searchInput.value;
         if (searchTerm) {
+            moviesContainer.innerHTML = ''; // Limpa os resultados anteriores
+            loader.style.display = 'flex'; // MOSTRA o loader
+
             getMovies(API_URL + '&query=' + searchTerm);
         } else {
             moviesContainer.innerHTML = '<p>Por favor, digite algo na busca.</p>';
+            loader.style.display = 'none';
         }
     });
 
@@ -35,22 +40,20 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error("Erro ao buscar filmes:", error);
             moviesContainer.innerHTML = '<p>Erro ao carregar os filmes. Tente novamente.</p>';
         }
+        finally {
+            loader.style.display = 'none';
+        }
     }
 
     function showMovies(movies) {
-        moviesContainer.innerHTML = ''; 
-
         movies.forEach(movie => {
-            const { title, poster_path, overview } = movie;
+            const { title, poster_path, overview, vote_average } = movie;
 
             const movieCard = document.createElement('div');
             movieCard.classList.add('movie-card');
-
-            // Lidar com poster faltando (muito comum!)
+            
             const poster = poster_path ? `${IMG_URL}${poster_path}` : 'https://placehold.co/200x300?text=Sem+Imagem';
-
-            // Preenche o HTML interno do card
-            // (Isso é mais rápido que criar cada H3, P, etc. com createElement)
+            
             movieCard.innerHTML = `
                 <img src="${poster}" alt="${title}">
                 <h3>${title}</h3>
@@ -59,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
             
-            // "Instancia" o card na tela
             moviesContainer.appendChild(movieCard);
         });
     }
