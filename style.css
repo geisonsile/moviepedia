@@ -1,0 +1,28 @@
+/* ... (estilos básicos de body, header, etc) ... */
+
+#movies-container {
+    display: grid;
+    /* Essa é a linha "mágica" do CSS Grid moderno: */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px; /* Espaçamento entre os cards */
+    padding: 24px;
+}
+
+.movie-card {
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    overflow: hidden; /* Pra imagem não vazar do border-radius */
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.movie-card h3 {
+    padding: 8px;
+    font-size: 1rem;
+    text-align: center;
+}
