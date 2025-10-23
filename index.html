@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <h1>MoviePedia</h1>
+        <h1>Moviepédia</h1>
         <form id="search-form">
             <input type="text" id="search-input" placeholder="Digite o nome de um filme...">
             <button type="submit">Buscar</button>
@@ -19,8 +19,19 @@
         <div id="loader" class="loader-container">
             <div class="loader"></div>
         </div>
+        <div id="message"></div>
         <div id="movies-container"></div>
     </main>
+
+    <div id="modal" class="modal-container">
+        <div class="modal-content">
+            <span id="modal-close" class="modal-close">&times;</span>
+            <img id="modal-poster" src="" alt="Poster do Filme">
+            <h2 id="modal-title">Título do Filme</h2>
+            <p id="modal-rating">Nota: 9.9 ⭐</p>
+            <p id="modal-overview">Aqui vai a sinopse completa do filme...</p>
+        </div>
+    </div>
 
     <script src="config.js"></script>
     <script src="script.js"></script>
