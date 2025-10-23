@@ -15,7 +15,7 @@ Você pode testar o projeto em funcionamento clicando aqui:
 
 ## 📸 Screenshot
 
-![MoviePedia em ação](screenshot_home.jpg)
+![MoviePedia em ação](screenshot_home.gif)
 
 ---
 
