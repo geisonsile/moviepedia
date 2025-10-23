@@ -42,6 +42,20 @@ Este projeto foi construído utilizando as seguintes tecnologias:
 
 ---
 
+## 🔑 Uma Nota Sobre a API Key
+
+Para este projeto, a chave da API do TheMovieDB (TMDB) está intencionalmente incluída no arquivo `config.js` e exposta no código-fonte do front-end.
+
+**Esta foi uma decisão de arquitetura consciente pelos seguintes motivos:**
+
+1.  **Hospedagem Estática:** O projeto é 100% estático (HTML/CSS/JS) e hospedado no GitHub Pages, que não permite a execução de código back-end para ocultar chaves em variáveis de ambiente.
+2.  **Natureza da API:** A API v3 do TMDB é tratada como uma "chave pública". Diferente de APIs de pagamento ou serviços como Google Maps, o TMDB não oferece (no momento) a funcionalidade de "restrição por domínio" (HTTP Referrer).
+3.  **Segurança Reativa:** A "proteção" para este tipo de chave é reativa, e não proativa. Em um cenário de abuso (como estouro do *rate limiting*), a chave pode ser instantaneamente regenerada no painel do TMDB e atualizada no repositório.
+
+Em um projeto de produção em larga escala, a abordagem correta seria criar um **servidor proxy (back-end)** que atuaria como intermediário, mantendo a chave de API 100% segura. Para o escopo deste projeto de portfólio, a solução atual é a mais adequada para demonstrar as funcionalidades de front-end.
+
+---
+
 ## 📚 O que eu aprendi
 
 * Manipulação avançada do DOM (criar, adicionar e modificar elementos dinamicamente).
@@ -55,6 +69,8 @@ Este projeto foi construído utilizando as seguintes tecnologias:
 
 ## ⚙️ Como rodar o projeto localmente
 
+Como o arquivo `config.js` (contendo a API key) está incluído no repositório para fins de demonstração no GitHub Pages, basta seguir os passos:
+
 1.  Clone este repositório:
     ```bash
     git clone https://github.com/geisonsile/moviepedia.git
@@ -63,11 +79,6 @@ Este projeto foi construído utilizando as seguintes tecnologias:
     ```bash
     cd nome-do-repositorio
     ```
-3.  **Importante:** Você precisará de uma chave de API do [TheMovieDB](https://www.themoviedb.org/).
-    * Crie um arquivo chamado `config.js` na raiz do projeto.
-    * Dentro dele, cole a seguinte linha, substituindo pela sua chave:
-        ```javascript
-        const API_KEY = 'SUA_CHAVE_DA_API_AQUI';
-        ```
-    * *(O arquivo `config.js` está intencionalmente no `.gitignore` para proteger chaves sensíveis)*
-4.  Abra o arquivo `index.html` no seu navegador de preferência.
+3.  Abra o arquivo `index.html` no seu navegador de preferência.
+
+*(Se, por algum motivo, a chave de API no repositório expirar, você pode gerar uma nova no [TheMovieDB](https://www.themoviedb.org/) e substituir o conteúdo da variável `API_KEY` no arquivo `config.js`.)*
